@@ -1,0 +1,29 @@
+seed: 42
+device: auto
+output_dir: runs/simclr
+
+data:
+  dataset: cifar10
+  root: data
+  batch_size: 256
+  num_workers: 4
+  image_size: 32
+
+model:
+  name: vit_tiny
+  image_size: 32
+  patch_size: 4
+  embed_dim: 192
+  depth: 6
+  num_heads: 3
+  mlp_ratio: 4.0
+  dropout: 0.1
+  stochastic_depth: 0.1
+
+pretrain:
+  epochs: 50
+  lr: 0.0008
+  weight_decay: 0.05
+  temperature: 0.2
+  projection_dim: 128
+  amp: true

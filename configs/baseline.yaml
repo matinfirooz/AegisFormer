@@ -1,0 +1,42 @@
+seed: 42
+device: auto
+output_dir: runs/baseline
+
+data:
+  dataset: cifar10
+  root: data
+  batch_size: 128
+  num_workers: 4
+  image_size: 32
+  val_split: 0.1
+  augmentation: standard
+
+model:
+  name: vit_tiny
+  num_classes: 10
+  image_size: 32
+  patch_size: 4
+  embed_dim: 192
+  depth: 6
+  num_heads: 3
+  mlp_ratio: 4.0
+  dropout: 0.1
+  stochastic_depth: 0.1
+
+train:
+  epochs: 30
+  lr: 0.0005
+  weight_decay: 0.05
+  warmup_epochs: 3
+  label_smoothing: 0.1
+  mixup_alpha: 0.2
+  cutmix_alpha: 0.0
+  grad_clip: 1.0
+  amp: true
+
+robust:
+  adversarial_training: false
+  attack: pgd
+  epsilon: 0.031372549
+  alpha: 0.007843137
+  steps: 7
